@@ -1,43 +1,31 @@
 $(document).ready(function(){
   // GLOBAL VARIABLES ========================================
-  var timer = 120;
+  var timer = 10;
   var timeId;
   var correctAnswers = 0;
   var incorrectAnswers = 0;
   var unanswered = 0;
 
   // FUNCTIONS ===============================================
-  //Render Questions
-  let gameManager = {
-    setGameStart: function() {
-      this.setQuestion();
-      this.setAnswers();
-    },
-    setQuestion: function (){
 
-    },
-    setAnswers: function (){
-
-    }
-  }
-  
   //Check Answers
   function checkAnswers (){
     for (var q = 1; q <= 10; q++){
       for (var a = 1; a <= 3; a++){
-        var answerValue = document.getElementById("inlineRadio" + [a]).value;
-        //console.log(answerValue);
-        if (answerValue === "correct"){
+        var answerValue = document.getElementById("inlineRadio" + a+ "-q" + q).value;
+        var answerChecked = document.getElementById("inlineRadio" + a+ "-q" + q).checked;
+        if ((answerValue == "correct") && (answerChecked == true)){
           correctAnswers++;
-          //console.log(correctAnswers);
         }
-        if (answerValue === "incorrect"){
+        if ((answerValue == "incorrect") && (answerChecked == true)){
           incorrectAnswers++;
         }
-        else {
-          unanswered++;
-        }
       }
+      unanswered = 10 - (incorrectAnswers + correctAnswers);
+      $("#stats-container").show();
+      $("#number-correct").text("CORRECT: " + correctAnswers);
+      $("#number-incorrect").text("INCORRECT: " + incorrectAnswers);
+      $("#number-unanswered").text("UNANSWERED: " + unanswered);
     }
   };
 
@@ -46,6 +34,8 @@ $(document).ready(function(){
   $(".question-container").hide();
   $(".timer-container").hide();
   $("#done").hide();
+  $("#stats-container").hide();
+  $("#tagline").show();
 
   $("#play").on("click",function(){
     function startTimer(){
@@ -54,10 +44,15 @@ $(document).ready(function(){
     };
     function decrement(){
       timer--;
+      //console.log(timer);
       var converted = timeConverter(timer);
       $("#timer").text(converted);
-      if (timer === 0) {
+      if (timer == 0) {
         stopTimer();
+        $(".question-container").hide();
+        $(".timer-container").hide();
+        $("#done").hide();
+        checkAnswers();
       }
     };
     function timeConverter(t) {
@@ -71,18 +66,17 @@ $(document).ready(function(){
       }
       return minutes + ":" + seconds;
     }
+    function stopTimer() {
+      clearInterval(timeId);
+    }
     $(".question-container").show();
     $(".timer-container").show();
     $("#play").hide();
     $("#done").show();
+    $("#tagline").hide();
     startTimer();
     
-    if (timer === 0){
-      clearInterval(timeId);
-      $(".timer-container").hide();
-      $(".question-container").hide();
-      checkAnswers();
-    }
+  
     $("#done").on("click",function(){
       clearInterval(timeId);
       $(".timer-container").hide();

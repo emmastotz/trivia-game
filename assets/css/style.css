@@ -1,0 +1,58 @@
+h1 {
+  font-family: 'Mansalva', cursive;
+  text-align: center;
+}
+
+img {
+  width: 50%;
+  height: auto;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  background-image: url(../images/central-perk.jpg);
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+div.timer-container {
+  font-family: 'Mansalva', cursive;
+  font-size: 52px;
+}
+
+p#refresh {
+  font-size: 12px;
+}
+
+p#tagline {
+  font-size: 18px;
+}
+
+button {
+  font-family: 'Mansalva', cursive;
+  background-color: black;
+  color: white;
+}
+
+div.jumbotron {
+  background-color: rgba(255, 255, 255, 0.50);
+}
+
+div.question-container {
+  background-color: rgba(255, 255, 255, 0.50);
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+div#stats-container {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+}
+
+#timer {
+  color: white;
+}
