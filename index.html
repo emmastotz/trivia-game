@@ -21,31 +21,12 @@
     <!-- Link to jQuery CDN -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!-- Link to Javascript Logic -->
-		<script type="text/javascript" src="assets/javascript/game.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <script type="text/javascript" src="assets/javascript/questions.js"></script>
     
   </head>
   
   <body>
-    <!-- START DIV -->
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Play the Friends trivia game?</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">Pressing play starts the time!</div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" id="play" data-dismiss="modal">Play</button>
-              <button type="button" class="btn btn-secondary" id="close">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
     <!-- HEADER/QUESTIONS DIV -->
     <!-- Header -->
     <div class="container-fluid" id="header">
@@ -58,24 +39,47 @@
       </div>
     </div>
 
+    <!-- Start Button -->
+    <div class="container">
+        <div class="row">
+          <div class="col">
+            <div></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col justify-content-center">
+            <button type="button" class="btn btn-secondary btn-lg" id="play">START</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+              <div></div>
+          </div>
+        </div>
+      </div>
+
     <!-- Timer -->
     <div class="timer-container" id="timer"></div>
+
+    <hr>
     
-    <!-- Questions -->
-    <div class="container" id="question-container">
+    <div class="container question-container">
       <div class="row">
         <div class="col-12">
           <!-- Question 1 -->
           <div class="questions" id="question1">1. Monica briefly dates billionaire Pete Becker. Which country does he take her for their first date?</div>
           <div class="form-check form-check-inline">
+            <a href="#" onclick="app.setGameStart('Italy')"></a>
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="correct">
             <label class="form-check-label" for="inlineRadio1">Italy</label>
           </div>
           <div class="form-check form-check-inline">
+            <a href="#" onclick="app.setGameStart('France')"></a>
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="incorrect">
             <label class="form-check-label" for="inlineRadio2">France</label>
           </div>
           <div class="form-check form-check-inline">
+            <a href="#" onclick="app.setGameStart('Greece')"></a>
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="incorrect">
             <label class="form-check-label" for="inlineRadio3">Greece</label>
           </div>
@@ -87,7 +91,7 @@
       <div class="row">
         <div class="col-12">
           <!-- Question 2 -->
-          <div class="questions" id="question1">2. Rachel was popular in high school. Her prom date Chip ditched her for which girl at school?</div>
+          <div class="questions" id="question2">2. Rachel was popular in high school. Her prom date Chip ditched her for which girl at school?</div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="incorrect">
             <label class="form-check-label" for="inlineRadio1">Sally Roberts</label>
@@ -104,11 +108,11 @@
       </div>
       
       <hr>
-
+    
       <div class="row">
         <div class="col-12">
           <!-- Question 3 -->
-          <div class="questions" id="question1">3. handler is a unique first name, but Bing is something different! Chandler says that his last name is Gaelic for what?</div>
+          <div class="questions" id="question3">3. Chandler is a unique first name, but Bing is something different! Chandler says that his last name is Gaelic for what?</div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="incorrect">
             <label class="form-check-label" for="inlineRadio1">"Huzzah! The team has scored!"</label>
@@ -123,13 +127,13 @@
           </div>
         </div>
       </div>
-
+    
       <hr>
       
       <div class="row">
         <div class="col-12">
           <!-- Question 4 -->
-          <div class="questions" id="question1">4. How much of Joey’s heritage is Portuguese?</div>
+          <div class="questions" id="question4">4. How much of Joey’s heritage is Portuguese?</div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="incorrect">
             <label class="form-check-label" for="inlineRadio1">1/4</label>
@@ -144,13 +148,13 @@
           </div>
         </div>
       </div>
-
+    
       <hr>
-
+    
       <div class="row">
         <div class="col-12">
           <!-- Question 5 -->
-          <div class="questions" id="question1">5. What fake name does Phoebe use when she wants to remain anonymous?</div>
+          <div class="questions" id="question5">5. What fake name does Phoebe use when she wants to remain anonymous?</div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="correct">
             <label class="form-check-label" for="inlineRadio1">Regina Phalange</label>
@@ -161,17 +165,17 @@
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="incorrect">
-            <label class="form-check-label" for="inlineRadio3">Phyllis Halpert</label>
+            <label class="form-check-label" for="inlineRadio3">Anastasia Beaverhausen</label>
           </div>
         </div>
       </div>
-
+    
       <hr>
-
+    
       <div class="row">
         <div class="col-12">
           <!-- Question 6 -->
-          <div class="questions" id="question1">6. Monica and Chandler met on Thanksgiving in 1987. She pursued her career as a chef because Chandler complimented her on which dish?</div>
+          <div class="questions" id="question6">6. Monica and Chandler met on Thanksgiving in 1987. She pursued her career as a chef because Chandler complimented her on which dish?</div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
             <label class="form-check-label" for="inlineRadio1">Mac & Cheese</label>
@@ -186,20 +190,20 @@
           </div>
         </div>
       </div>
-
+    
       <hr>
-
+    
       <div class="row">
         <div class="col-12">
           <!-- Question 7 -->
-          <div class="questions" id="question1">7. When Ross and Rachel were "on a break," Ross slept with Chloe. Where does she work?</div>
+          <div class="questions" id="question7">7. When Ross and Rachel were "on a break," Ross slept with Chloe. Where does she work?</div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="correct">
-            <label class="form-check-label" for="inlineRadio1">Xerox</label>
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="incorrect">
+            <label class="form-check-label" for="inlineRadio1">Domino's</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="incorrect">
-            <label class="form-check-label" for="inlineRadio2">Domino's</label>
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="correct">
+            <label class="form-check-label" for="inlineRadio2">Xerox</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="incorrect">
@@ -207,13 +211,13 @@
           </div>
         </div>
       </div>
-
+    
       <hr>
-
+    
       <div class="row">
         <div class="col-12">
           <!-- Question 8 -->
-          <div class="questions" id="question1">8. What’s Joey’s penguin’s name?</div>
+          <div class="questions" id="question8">8. What’s Joey’s penguin’s name?</div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="correct">
             <label class="form-check-label" for="inlineRadio1">Huggsy</label>
@@ -228,13 +232,13 @@
           </div>
         </div>
       </div>
-
+    
       <hr>
-
+    
       <div class="row">
         <div class="col-12">
           <!-- Question 9 -->
-          <div class="questions" id="question1">9. Janice gets married twice. What’s was her first husband’s name?</div>
+          <div class="questions" id="question9">9. Janice gets married twice. What’s was her first husband’s name?</div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="incorrect">
             <label class="form-check-label" for="inlineRadio1">Chandler Bing</label>
@@ -249,13 +253,13 @@
           </div>
         </div>
       </div>
-
+    
       <hr>
-
+    
       <div class="row">
         <div class="col-12">
           <!-- Question 10 -->
-          <div class="questions" id="question1">10. What’s the name of the 1950s-themed diner where Monica worked as a waitress?</div>
+          <div class="questions" id="question10">10. What’s the name of the 1950s-themed diner where Monica worked as a waitress?</div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="incorrect">
             <label class="form-check-label" for="inlineRadio1">Marilyn & Audrey</label>
@@ -272,8 +276,7 @@
       </div>
     </div>
 
-    <hr>
-
+    <!-- Done Button -->
     <div class="container">
       <div class="row">
         <div class="col">
@@ -282,7 +285,7 @@
       </div>
       <div class="row">
         <div class="col justify-content-center">
-          <button type="button" class="btn btn-secondary btn-lg">DONE</button>
+          <button type="button" class="btn btn-secondary btn-lg" id="done">DONE</button>
         </div>
       </div>
       <div class="row">
