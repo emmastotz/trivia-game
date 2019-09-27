@@ -1,6 +1,6 @@
 $(document).ready(function(){
   // GLOBAL VARIABLES ========================================
-  var timer = 10;
+  var timer = 90;
   var timeId;
   var correctAnswers = 0;
   var incorrectAnswers = 0;
